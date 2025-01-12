@@ -1,4 +1,4 @@
-# GIS RSS News
+# YOUR Academic  News 
 
 这是一个自动抓取和展示GIS相关学术期刊最新文章的系统。系统会定期从设定的RSS源获取最新文章，并提供中英文双语展示。
 
