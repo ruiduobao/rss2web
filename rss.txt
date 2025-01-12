@@ -1,0 +1,4 @@
+https://www.mdpi.com/rss/journal/remotesensing;
+https://www.mdpi.com/rss/journal/sensors;
+https://www.mdpi.com/rss/journal/ijgi;
+

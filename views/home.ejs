@@ -1,0 +1,47 @@
+<div class="grid">
+    <% articles.forEach(function(article) { %>
+        <div class="grid-item" style="display: <%= (!isEnglish && !article.title_zh) ? 'none' : 'block' %>">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <span class="title-en" style="display: none;">
+                            <%= article.title %>
+                        </span>
+                        <span class="title-zh">
+                            <%= article.title_zh || article.title %>
+                        </span>
+                        <a href="/articles/<%= article.id %>" class="stretched-link"></a>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= article.journal_name %></h6>
+                    <p class="card-text">
+                        <span class="summary-en" style="display: none;">
+                            <%= article.summary %>
+                        </span>
+                        <span class="summary-zh">
+                            <%= article.summary_zh || article.summary %>
+                        </span>
+                    </p>
+                    <div class="card-footer bg-transparent">
+                        <small class="text-muted">
+                            Published: <%= new Date(article.published_date).toLocaleDateString() %>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+<div class="pagination-container text-center mt-4">
+    <% if (pagination.pages > 1) { %>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <% for(let i = 1; i <= pagination.pages; i++) { %>
+                    <li class="page-item <%= i === pagination.current ? 'active' : '' %>">
+                        <a class="page-link" href="/?page=<%= i %>"><%= i %></a>
+                    </li>
+                <% } %>
+            </ul>
+        </nav>
+    <% } %>
+</div> 

@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="article-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>
+                <span class="title-en" style="display: none;"><%= article.title %></span>
+                <span class="title-zh"><%= article.title_zh || article.title %></span>
+            </h1>
+            <!-- <div class="language-switch">
+                <button class="btn btn-outline-primary btn-sm" id="langToggle">
+                    <span class="lang-text">EN</span>
+                </button>
+            </div> -->
+        </div>
+        
+        <div class="meta-info mb-4">
+            <p class="text-muted">
+                Published: <%= new Date(article.published_date).toLocaleDateString() %> | 
+                Journal: <%= article.journal_name %> |
+                <% if (article.link && article.link.trim()) { %>
+                    <a href="<%= article.link %>" target="_blank">View Article</a>
+                <% } else if (article.doi && article.doi.trim()) { %>
+                    DOI: <a href="https://doi.org/<%= article.doi %>" target="_blank"><%= article.doi %></a>
+                <% } %>
+            </p>
+        </div>
+
+        <div class="article-content">
+            <p class="summary-en" style="display: none;"><%= article.summary %></p>
+            <p class="summary-zh"><%= article.summary_zh || article.summary %></p>
+        </div>
+
+        <div class="comments-section mt-5">
+            <h3>Comments</h3>
+            <% if (comments && comments.length > 0) { %>
+                <% comments.forEach(function(comment) { %>
+                    <div class="comment mb-3">
+                        <div class="comment-header">
+                            <strong><%= comment.username %></strong>
+                            <small class="text-muted"><%= new Date(comment.created_at).toLocaleString() %></small>
+                        </div>
+                        <div class="comment-content">
+                            <%= comment.content %>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No comments yet.</p>
+            <% } %>
+
+            <form class="comment-form mt-4" action="/articles/<%= article.id %>/comments" method="POST">
+                <div class="mb-3">
+                    <textarea 
+                        class="form-control" 
+                        name="content" 
+                        rows="3" 
+                        placeholder="Write your comment..." 
+                        required
+                        minlength="1"
+                    ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Comment</button>
+            </form>
+        </div>
+    </div>
+</div> 
