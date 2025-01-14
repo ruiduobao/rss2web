@@ -43,10 +43,8 @@ python init_db.py
 npm install
 ```
 
-安装 Python 依赖（仅本地数据库需要）
-```bash
-pip install -r requirements.txt
-```
+安装 Python 依赖（python3版本就行，看一看.py用到了那些包，用conda即可安装成功）
+
 
 ## 启动服务
 启动 Express 服务器
