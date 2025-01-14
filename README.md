@@ -73,7 +73,6 @@ python translate_articles.py
 ├── rss_parser.py   # RSS解析脚本
 ├── translate_articles.py # 文章翻译脚本
 ├── rss.txt         # RSS源
-└── requirements.txt # Python依赖
 ```
 
 ## RSS 源
